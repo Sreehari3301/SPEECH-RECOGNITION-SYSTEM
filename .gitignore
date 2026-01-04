@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Binaries (Large files)
+bin/ffmpeg.exe
+bin/ffplay.exe
+bin/ffprobe.exe
+# Or just exclude the whole bin folder
+/bin/
+
+# OS files
+.DS_Store
+Thumbs.db
