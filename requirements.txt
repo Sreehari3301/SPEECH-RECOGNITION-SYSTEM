@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+python-multipart
+SpeechRecognition
+pydub
+jinja2
+googletrans==4.0.0rc1
