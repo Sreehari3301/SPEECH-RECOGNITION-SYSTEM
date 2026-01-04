@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SonicScribe | AI Speech to Text</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glob type-1"></div>
+    <div class="background-glob type-2"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fa-solid fa-wave-square"></i>
+                <h1>SonicScribe</h1>
+            </div>
+            <p class="tagline">Transform your voice into text instantly and translate between English, Malayalam, Hindi,
+                Tamil, Kannada & Telugu.</p>
+        </header>
+
+        <main>
+            <div class="card glass-panel">
+                <div class="control-panel">
+                    <div class="record-section">
+                        <button id="recordBtn" class="action-btn record-btn">
+                            <div class="icon-wrapper">
+                                <i class="fa-solid fa-microphone"></i>
+                            </div>
+                            <span id="recordText">Start Recording</span>
+                        </button>
+                        <div id="visualizer" class="hidden">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <div id="timer" class="hidden">00:00</div>
+                    </div>
+
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <div class="upload-section">
+                        <input type="file" id="audioInput"
+                            accept="audio/wav,audio/mpeg,audio/mp3,audio/mp4,audio/m4a,audio/ogg,audio/opus,.wav,.mp3,.m4a,.opus"
+                            hidden>
+                        <button id="uploadClickTarget" class="action-btn upload-btn">
+                            <div class="icon-wrapper">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <span>Upload Audio File</span>
+                        </button>
+                        <span id="fileName" class="file-name"></span>
+                    </div>
+                </div>
+
+                <!-- Language & Duration Selector -->
+                <div class="settings-row">
+                    <div class="setting-group">
+                        <label for="languageSelect">
+                            <i class="fa-solid fa-language"></i> Language
+                        </label>
+                        <select id="languageSelect" class="language-dropdown">
+                            <option value="auto">🌐 Auto-detect</option>
+                            <option value="english">🇬🇧 English</option>
+                            <option value="malayalam">🇮🇳 Malayalam (മലയാളം)</option>
+                            <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
+                            <option value="tamil">🇮🇳 Tamil (தமிழ்)</option>
+                            <option value="kannada">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                            <option value="telugu">🇮🇳 Telugu (తెలుగు)</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="durationInput">
+                            <i class="fa-solid fa-clock"></i> Max Duration (min)
+                        </label>
+                        <input type="number" id="durationInput" class="duration-input" value="10" min="1" max="60">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card glass-panel result-card">
+                <div class="result-header">
+                    <h2><i class="fa-solid fa-align-left"></i> Transcription</h2>
+                    <div class="actions">
+                        <button id="copyBtn" class="icon-btn" title="Copy to Clipboard">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                        <button id="clearBtn" class="icon-btn" title="Clear">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="transcription-box" id="transcriptionBox">
+                    <p class="placeholder-text">Press record or upload a file to begin...</p>
+                    <div class="loader hidden" id="loader">
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Translation Section -->
+            <div class="card glass-panel translation-card">
+                <div class="result-header">
+                    <h2><i class="fa-solid fa-language"></i> Translation</h2>
+                    <div class="actions">
+                        <button id="copyTranslationBtn" class="icon-btn" title="Copy to Clipboard">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="translation-controls">
+                    <div class="language-row">
+                        <div class="language-select-group">
+                            <label for="translateFrom">
+                                <i class="fa-solid fa-globe"></i> From
+                            </label>
+                            <select id="translateFrom" class="language-dropdown">
+                                <option value="auto">🌐 Auto-detect</option>
+                                <option value="english">🇬🇧 English</option>
+                                <option value="malayalam">🇮🇳 Malayalam (മലയാളം)</option>
+                                <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
+                                <option value="tamil">🇮🇳 Tamil (தமிழ்)</option>
+                                <option value="kannada">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                                <option value="telugu">🇮🇳 Telugu (తెలుగు)</option>
+                            </select>
+                        </div>
+
+                        <div class="swap-icon">
+                            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                        </div>
+
+                        <div class="language-select-group">
+                            <label for="translateTo">
+                                <i class="fa-solid fa-flag"></i> To
+                            </label>
+                            <select id="translateTo" class="language-dropdown">
+                                <option value="english">🇬🇧 English</option>
+                                <option value="malayalam">🇮🇳 Malayalam (മലയാളം)</option>
+                                <option value="hindi">🇮🇳 Hindi (हिन्दी)</option>
+                                <option value="tamil">🇮🇳 Tamil (தமிழ்)</option>
+                                <option value="kannada">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                                <option value="telugu">🇮🇳 Telugu (తెలుగు)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="translateBtn" class="action-btn translate-btn">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-language"></i>
+                        </div>
+                        <span>Translate</span>
+                    </button>
+                </div>
+
+                <div class="translation-output" id="translationOutput">
+                    <p class="placeholder-text">Transcribe audio first, then click translate...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/script.js"></script>
+</body>
+
+</html>
