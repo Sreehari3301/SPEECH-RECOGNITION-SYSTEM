@@ -162,5 +162,8 @@ After transcribing audio, you can now translate the text between any of the supp
 - Support for more languages
 
 ---
+## Output
+<img width="1896" height="912" alt="Image" src="https://github.com/user-attachments/assets/2efc5edc-dc46-437c-989c-5c81bdf342d0" />
+<img width="1886" height="989" alt="Image" src="https://github.com/user-attachments/assets/75412698-e8bd-4d40-9899-5f616151143e" />
 
 **Enjoy your upgraded multilingual speech-to-text and translation system! 🎊**
