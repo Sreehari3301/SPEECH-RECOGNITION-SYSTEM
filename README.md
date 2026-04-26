@@ -1,19 +1,5 @@
 # SPEECH-RECOGNITION-SYSTEM
 
-*COMPANY NAME*: CODTECH IT SOLUTIONS
-
-*NAME*: SREEHARI R
-
-*INTERN ID*: CTIS0675
-
-*DOMIAN*: ARTIFICIAL INTELLIGENCE
-
-*DURATION*: 4 WEEKS
-
-*MENTOR*: NEELA SANTHOSH
-
-# SonicScribe - Translation Upgrade Summary
-
 ## 🎉 What's New
 
 Your speech-to-text system has been successfully upgraded with **multilingual translation capabilities**!
